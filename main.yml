@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  VPCCIDR:
+    Type: String
+  PublicSubnetACIDR:
+    Type: String
+  PublicSubnetBCIDR:
+    Type: String
+  PrivateSubnetACIDR:
+    Type: String
+  PrivateSubnetBCIDR:
+    Type: String
+Resources:
+  EC2Stack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://dennis-bucjhjhj.s3.amazonaws.com/mynetwork.yml
+      TimeoutInMinutes: '5'
+      Parameters:
+        VPCCIDR:
+          Ref: VPCCIDR
+        PublicSubnetACIDR:
+          Ref: PublicSubnetACIDR
+        PublicSubnetBCIDR:
+          Ref: PublicSubnetBCIDR
+        PrivateSubnetACIDR:
+          Ref: PrivateSubnetACIDR
+        PrivateSubnetBCIDR:
+          Ref: PrivateSubnetBCIDR
